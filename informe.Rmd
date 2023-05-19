@@ -26,6 +26,7 @@ Los datos estudiados son entre las fechas 28-05-2019 hasta el 04-06-2019
 
 
 ## Exploración de los datos
+creo Variable General con la totalidad de los datos
 
 
 ```{r}
@@ -34,17 +35,46 @@ Vinos <- read.csv("datos/vinos.csv")
 ```
 
 
+Se saco un promedio mundial de Calificaciones (puntos)
+
+```{r}
+summarise(Vinos, promedio_puntos = mean (puntos))
+
+```
+
+Se saco un promedio mundial de Precios
+
+```{r}
+summarise(Vinos, promedio_precio = mean (precio, na.rm= TRUE))
+```
+
+Promedio, minimos y maximos de calificacion y precios agrupados por pais
+
+```{r}
+Vinos |>
+  group_by(pais)|>
+  summarise(mean(puntos, na.rm= TRUE), min(puntos, na.rm= TRUE), max(puntos, na.rm= TRUE), mean(precio, na.rm= TRUE), min(precio, na.rm= TRUE), max(precio, na.rm= TRUE)) 
+```
+
+
+Creo variable para separar y poder analizar solo los vinos argentinos
 
 ```{r}
 vinos_arg <- filter(Vinos, pais == "Argentina")
 ```
 
+
+## Hipótesis
+
+Cantidad de varietales, Promedio, minimos y maximos de calificacion y precios agrupados por vinas argentinas
+
 ```{r}
-vinos_arg_premium <- filter(vinos_arg, puntos > 90)
+vinos_arg|>
+  group_by(vina)|>
+  summarise(length(variedad), mean(puntos, na.rm= TRUE), min(puntos, na.rm= TRUE), max(puntos, na.rm= TRUE), mean(precio, na.rm= TRUE), min(precio, na.rm= TRUE), max(precio, na.rm= TRUE))|>
+  
 ```
 
 
-
-## Hipótesis
 
 
