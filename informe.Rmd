@@ -71,7 +71,7 @@ Cantidad de varietales, Promedio, minimos y maximos de calificacion y precios ag
 ```{r}
 vinos_arg|>
   group_by(vina)|>
-  summarise(length(variedad), mean(puntos, na.rm= TRUE), min(puntos, na.rm= TRUE), max(puntos, na.rm= TRUE), mean(precio, na.rm= TRUE), min(precio, na.rm= TRUE), max(precio, na.rm= TRUE))|>
+  summarise(length(variedad), mean(puntos, na.rm= TRUE), min(puntos, na.rm= TRUE), max(puntos, na.rm= TRUE), mean(precio, na.rm= TRUE), min(precio, na.rm= TRUE), max(precio, na.rm= TRUE))
   
 ```
 
